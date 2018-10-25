@@ -19,47 +19,25 @@ public class CrapsTest {
 		int roll1 = dice1.roll();
 		int roll2 = dice2.roll();
 		int sum = roll1+roll2;
-		
-		
+		String choice = "Yes";
+		while (choice.equals("Yes"))
+		{
 		if  (sum == 7)
 		{
 			System.out.println("You rolled a " + sum + ", so you won!");
-			System.out.println("Would you like to play again? If so, type Yes. If not, type No");
-			String choice =  in.next();
+			System.out.println("If you want to play again, type Yes. If you don't, type No: ");
+			choice = in.next();
 			in.nextLine();
-			
-			while (choice == "Yes")
+			while (!choice.equals("Yes") || (!choice.equals("No")))
 			{
-				
-			}
-			if (choice == "No")
-			{
-				
-			}
-			while (choice != "No" || choice != "Yes")  
-			{
-				
+				System.out.print("You entered the wrong string. Please enter it again: ");
+				choice = in.next();
+				in.nextLine();
 			}
 		}
 		else if (sum == 11)	
 		{
 			System.out.println("You rolled a " + sum + ", so you won!");
-			System.out.println("Would you like to play again? If so, type Yes. If not, type No");
-			String choice =  in.next();
-			in.nextLine();
-			
-			while (choice == "Yes")
-			{
-				System.out.println("Press enter to roll: ");
-			}
-			if (choice == "No")
-			{
-				
-			}
-			while (choice != "No" || choice != "Yes")  
-			{
-				
-			}
 		}
 		else if (sum == 2)
 		{
@@ -71,7 +49,32 @@ public class CrapsTest {
 		}
 		else if (sum > 2 || sum < 7 || sum > 7 || sum < 11)
 		{
-			System.out.println("You point is " + sum + ".");
+			int point = sum;
+			System.out.println("Your point is " + sum + ".");
+			System.out.println("Press enter to roll again: ");
+			in.nextLine();
+			roll1 = dice1.roll();
+			roll2 = dice2.roll();
+			sum = roll1 + roll2;
+			while (point != sum && sum != 7)
+			{
+				System.out.println("You rolled a " + sum + ".  Keep trying!");
+				System.out.println("Press enter to roll again: ");
+				in.nextLine();
+				roll1 = dice1.roll();
+				roll2 = dice2.roll();
+				sum = roll1 + roll2;
+			}
+			if (sum == 7)
+			{
+				System.out.print("You rolled a " + sum + ". You lost. Press enter to continue:");
+				in.nextLine();
+			}
+			if (point == sum)
+			{
+				System.out.print("You rolled a " + sum + "! You won! Press enter to continue: ");
+			}
+		}
 		}
 	}
 
